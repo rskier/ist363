@@ -18,6 +18,9 @@ console.log(introduction);
 const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn");
 const overlay = document.getElementById("overlay");
+const coffeeList = document.getElementById("coffeeList");
+const ascendingBtn = document.getElementById("ascendingBtn");
+const descendingBtn = document.getElementById("descendingBtn");
 
 //console.log(menuBtn);
 
@@ -30,6 +33,26 @@ menuBtn.addEventListener("click", function() {
 closeBtn.addEventListener("click", function() {
     overlay.classList.remove("active");
 }); // end of closeBtn click event
+
+function purgeList() {
+    coffeeList.innerHTML = "";
+}
+
+function sortList (sortDirection) {
+    console.log({sortDirection});
+}
+
+ascendingBtn.addEventListener("click", function() {
+    console.log("ascending button has been clicked")
+    purgeList();
+    sortList("ascending");
+}) // end of asc button click event
+
+descendingBtn.addEventListener("click", function() {
+    console.log("descending button has been clicked")
+    purgeList();
+    sortList("descending");
+}) //end of desc button click event
 
 //arrays and objects
 
@@ -109,7 +132,20 @@ function buildTextElement(element, className, content) {
     return newElement;
 }
 
-coffees.forEach(function(coffee) {
+const sortedCoffees = [...coffees].sort(function (a,b) {
+    if (a.title < b.title) {
+        return -1;
+    }
+    if (a.title > b.title) {
+        return 1;
+    }
+    if (a.title === b.title) {
+        return 0;
+    }
+}); //sort method end
+console.log({sortedCoffees});
+
+sortedCoffees.forEach(function(coffee) {
     // 1. deconstruct the coffee object
     const {title, price, description, image} = coffee;
     
@@ -118,7 +154,7 @@ coffees.forEach(function(coffee) {
     coffeeArticle.classList.add("coffee-item");
 
     const coffeeImage = document.createElement("img");
-   // coffeeImage.src = `images/${image.fileName}`;
+    coffeeImage.src = `images/${image.fileName}`;
     coffeeImage.width = image.width;
     coffeeImage.height = image.height;
     coffeeImage.alt = image.altText;
@@ -143,5 +179,5 @@ coffees.forEach(function(coffee) {
     coffeeArticle.appendChild(coffeeDescription);
 
     // 4. append the article to the body
-    document.body.appendChild(coffeeArticle);
+    coffeeList.appendChild(coffeeArticle);
 }); //end of coffees forEach method
