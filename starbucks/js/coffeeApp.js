@@ -6,31 +6,17 @@ const descendingBtn = document.getElementById("descendingBtn");
 const coffeeList = document.getElementById("coffeeList");
 const priceRanges = document.getElementById("priceRanges");
 
-const purgeList = () => {
-    coffeeList.innerHTML = "";
-}
-const sortListByDirection = (direction, arr) => {
-    //console.log({direction});
-    const sortedListArr = [...arr].sort((a,b)=>{
-        if (direction === 'ascending') {
-            if (a.title < b.title) {
-                return -1;
-            }
-        } else {
-            if (a.title > b.title) {
-                return -1;
-            }
-        }
-    });
-    return sortedListArr;
-}
-function buildTextElement(element, className, content) {
+let filteredCoffees = [...coffees];
+let sortDirection = 'ascending';
+
+const buildTextElement = (element, className, content) => {
     const newElement = document.createElement(element);
     newElement.classList.add(className);
     newElement.textContent = content;
     return newElement;
 }
 const displayList = (arr) => {
+    purgeList();
     arr.forEach((coffee) => {
         // 1. deconstruct the coffee object
         const {title, price, description, image} = coffee;
@@ -64,20 +50,50 @@ const displayList = (arr) => {
         coffeeList.appendChild(coffeeArticle);
     }); //end of coffees forEach method
 }; // display list function end
+const getFilteredCoffees = (minValue, maxValue) => {
+    const filteredArr = coffees.filter((coffee) => {
+        const {price} = coffee;
+        return price >= minValue && price <= maxValue;
+    });
+    console.log({filteredArr});
+    return filteredArr;
+}
+const sortListByDirection = (direction, arr) => {
+    //console.log({direction});
+    sortDirection = direction;
+    const sortedListArr = [...arr].sort((a,b)=>{
+        if (direction === 'ascending') {
+            if (a.title < b.title) {
+                return -1;
+            }
+        } else {
+            if (a.title > b.title) {
+                return -1;
+            }
+        }
+    });
+    return sortedListArr;
+}
+const purgeList = () => {
+    coffeeList.innerHTML = "";
+}
+
+
+
+
+
 
 // 2. create even listeners for the buttons
 ascendingBtn.addEventListener("click", function() {
     //console.log("ascending button has been clicked")
-    purgeList();
-    const sortedList = sortListByDirection("ascending", coffees);
+    const sortedList = sortListByDirection("ascending", filteredCoffees);
     //console.log({sortedList});
     displayList(sortedList);
 }) // end of asc button click event
 
 descendingBtn.addEventListener("click", function() {
     //console.log("descending button has been clicked")
-    purgeList();
-    const sortedList = sortListByDirection("descending", coffees);
+    const sortedList = sortListByDirection("descending", filteredCoffees);
    //console.log({sortedList});
    displayList(sortedList);
 }) //end of desc button click event
@@ -88,27 +104,22 @@ priceRanges.addEventListener("change", () => {
     const selectedRange = event.target.value;
 
     if (selectedRange === 'all') {
-        purgeList();
-        displayList(coffees);
+        //displayList(coffees);
+        filteredCoffees = sortListByDirection(sortDirection, [...coffees]);
     } else {
         //"2-3" becomes [2,3]
         const [minValue, maxValue] = selectedRange.split("-");
-        console.log({minValue, maxValue});
-        filterCoffees(minValue, maxValue);
-        const filteredCoffees = filterCoffees(minValue, maxValue);
-        purgeList();
-        displayList(filteredCoffees);
+        // console.log({minValue, maxValue});
+        const tempfilteredCoffees = getFilteredCoffees(minValue, maxValue);
+        filteredCoffees = sortListByDirection(sortDirection, tempfilteredCoffees);
     }//end of conditional
+    displayList(filteredCoffees);
 }); //end of priceRanges event 
 
-const filterCoffees = (minValue, maxValue) => {
-    return filteredCoffees = coffees.filter((coffee) => {
-        const {price} = coffee;
-        return price >= minValue && price <= maxValue;
-    });
-}
 
-displayList(coffees);
+
+const sortedStartedList = sortListByDirection(sortDirection, filteredCoffees);
+displayList(sortedStartedList);
 
 // 3. purge the coffee list (clear)
 
