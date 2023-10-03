@@ -19,7 +19,6 @@ ul, li {
 
 body {
   background-color: #f94f1a;
-  font-family: Arial, Verdana, sans-seif;
 }
 
 .overlay {
@@ -42,26 +41,9 @@ body {
   left: 0;
 }
 
-header {
-  background-color: teal;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-header h1 {
-  font-size: 3rem;
-  color: white;
-  font-family: Georgia;
-}
-header .btn {
-  background-color: pink;
-  padding: 1rem;
-  border: 0;
-}
-header .btn:hover {
-  background-color: brown;
-}
-header .btn.active {
-  background-color: yellow;
+h1 {
+  font-size: 36px;
+  color: var(--starbucks-green);
 }
 
 .logo {
