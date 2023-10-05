@@ -1,0 +1,6 @@
+@use "../abstracts/vars";
+
+body {
+    background-color: vars.$SUorange;
+    font-family: vars.$font_primary;
+}

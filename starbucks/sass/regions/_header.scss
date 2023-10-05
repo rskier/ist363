@@ -1,0 +1,22 @@
+@use "../abstracts/mixins";
+
+header {
+    background-color: teal;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    
+    h1 {
+        @include mixins.buildFontProperties(6rem, red, Arial);
+    }
+    .btn {
+        background-color: pink;
+        padding: 1rem;
+        border: 0;
+        &:hover {
+            background-color: brown;
+        }
+        &.active {
+            background-color: yellow;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+@mixin buildFontProperties($size, $color, $font:"Gerogia") {
+    font-size: $size;
+    color: $color;
+    font-family: $font;
+}

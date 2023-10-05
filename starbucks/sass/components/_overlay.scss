@@ -1,0 +1,70 @@
+.overlay {
+    background-color: var(--starbucks-green);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    z-index: 1000;
+    transition-property: all;
+    transition-duration: .5s;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+.overlay.active {
+    left: 0;
+}
+.logo {
+    width: 8rem;
+    height: auto;
+    margin-bottom: 2rem;
+    position: relative;
+    left: -1rem;
+    opacity: 0;
+    transition-property: all;
+    transition-delay: .25s;
+    transition-duration: .5s;
+}
+.mobile-nav {
+    /*background-color: yellow;*/
+    /* padding: 1rem; */
+}
+.mobile-nav a {
+    font-family: Arial;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    display: block;
+    padding: 1rem 0;
+    text-decoration: none;
+    /* background-color: pink; */
+}
+.mobile-nav ul li {
+    opacity: 0;
+    left:0;
+
+}
+.overlay.active ul li:nth-child(1) {
+    transition-delay: .5s;
+    transition-duration:1.25s;
+    opacity: 1;
+    left: 0;
+}
+.overlay.active ul li:nth-child(2) {
+    transition-delay: .6s;
+    transition-duration:1.25s;
+    opacity: 1;
+    left: 0;
+}
+.overlay.active ul li:nth-child(3) {
+    transition-delay: .7s;
+    transition-duration:1.25s;
+    opacity: 1;
+    left: 0;
+}
+.overlay.active .logo {
+    left:0;
+    opacity:1;
+}
