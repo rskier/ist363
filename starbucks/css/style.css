@@ -326,6 +326,30 @@ body {
   font-family: Arial, Verdana, sans-seif;
 }
 
+.btn-ui {
+  background-color: white;
+  border: 0;
+  padding: 1rem;
+}
+
+.btn-ui svg {
+  width: 3rem;
+  height: 3rem;
+  fill: var(--medium-gray);
+}
+
+#closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+#closeBtn svg {
+  fill: white;
+}
+
 .coffee-item {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -355,28 +379,28 @@ body {
   color: black;
 }
 
-.btn-ui {
-  background-color: white;
-  border: 0;
-  padding: 1rem;
+.logo {
+  width: 5rem;
+  height: auto;
 }
 
-.btn-ui svg {
-  width: 3rem;
-  height: 3rem;
-  fill: var(--medium-gray);
+.nav-desktop {
+  background-color: limegreen;
 }
-
-#closeBtn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: transparent;
-  border: 1px solid white;
+@media (min-width: 700px) {
+  .nav-desktop {
+    background-color: red;
+  }
 }
-
-#closeBtn svg {
-  fill: white;
+@media (min-width: 980px) {
+  .nav-desktop {
+    background-color: orange;
+  }
+}
+@media (min-width: 1140px) {
+  .nav-desktop {
+    background-color: violet;
+  }
 }
 
 .overlay {
@@ -394,12 +418,7 @@ body {
   justify-content: center;
   padding: 2rem;
 }
-
-.overlay.active {
-  left: 0;
-}
-
-.logo {
+.overlay .logo {
   width: 8rem;
   height: auto;
   margin-bottom: 2rem;
@@ -409,6 +428,10 @@ body {
   transition-property: all;
   transition-delay: 0.25s;
   transition-duration: 0.5s;
+}
+
+.overlay.active {
+  left: 0;
 }
 
 .mobile-nav {

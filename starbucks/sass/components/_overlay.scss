@@ -12,21 +12,22 @@
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
+    .logo {
+        width: 8rem;
+        height: auto;
+        margin-bottom: 2rem;
+        position: relative;
+        left: -1rem;
+        opacity: 0;
+        transition-property: all;
+        transition-delay: .25s;
+        transition-duration: .5s;
+    }
 }
 .overlay.active {
     left: 0;
 }
-.logo {
-    width: 8rem;
-    height: auto;
-    margin-bottom: 2rem;
-    position: relative;
-    left: -1rem;
-    opacity: 0;
-    transition-property: all;
-    transition-delay: .25s;
-    transition-duration: .5s;
-}
+
 .mobile-nav {
     /*background-color: yellow;*/
     /* padding: 1rem; */
