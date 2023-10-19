@@ -2,23 +2,42 @@
 
 .nav {
     background-color:yellow;
-    &.nav--desktop {
-        display:none;
-        @include mixins.breakpoint(laptop) {
-            display:block;
-        }
-    }
     &__list {
         display:flex;
         align-items: center;
         gap: 1rem;
     }
     &__item {
-        a {
-            font-family: arial;
-            font-weight: bold;
-            color: black;
-            text-decoration: none;
+        
+    }
+  &__link {
+        font-family: arial;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    &.nav--desktop {
+        display:none;
+        .nav__link {
+            color:black;
+            text-transform:uppercase;
+        }
+        @include mixins.breakpoint(laptop) {
+            display:block;
+        }
+    }
+    &.nav--mobile {
+        background-color: blue;
+    }
+    &.nav--social {
+        background-color: orange;
+        .nav__link {
+            color:white;
+        }
+    }
+    &.nav--footer {
+        background-color: red;
+        .nav__link {
+            color:white;
         }
     }
 }

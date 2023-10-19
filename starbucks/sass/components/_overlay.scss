@@ -1,5 +1,7 @@
+@use '../abstracts/vars';
+
 .overlay {
-    background-color: var(--starbucks-green);
+    background-color: vars.$color_green;
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -47,19 +49,19 @@
     left:0;
 
 }
-.overlay.active ul li:nth-child(1) {
+.overlay.active .nav__mobile ul li:nth-child(1) {
     transition-delay: .5s;
     transition-duration:1.25s;
     opacity: 1;
     left: 0;
 }
-.overlay.active ul li:nth-child(2) {
+.overlay.active .nav__mobile ul li:nth-child(2) {
     transition-delay: .6s;
     transition-duration:1.25s;
     opacity: 1;
     left: 0;
 }
-.overlay.active ul li:nth-child(3) {
+.overlay.active .nav__mobile ul li:nth-child(3) {
     transition-delay: .7s;
     transition-duration:1.25s;
     opacity: 1;
