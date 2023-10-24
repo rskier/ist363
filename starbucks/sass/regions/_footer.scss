@@ -1,0 +1,12 @@
+@use '../abstracts/mixins';
+@use '../abstracts/vars';
+
+footer {
+    background-color: vars.$color_green;
+    padding: 2rem 0;
+    color:white;
+    justify-content: center;
+    @include mixins.breakpoint(laptop) {
+        text-align: left;
+    }
+}

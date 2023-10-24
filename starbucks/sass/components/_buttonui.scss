@@ -1,0 +1,33 @@
+@use '../abstracts/vars';
+@use '../abstracts/mixins';
+
+.btn-ui {
+    background-color: white;
+    border: 0;
+    padding: 1rem;
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: vars.$color_green
+    }
+    img {
+        width: 1.5rem;
+        height: auto;
+
+    }
+    &.btn-ui--menu{
+        @include mixins.breakpoint(laptop) {
+            display:none;
+        }
+    }
+    &.btn-ui--close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: transparent;
+        border: 1px solid white;
+        svg {
+            fill:white;
+        }
+    }
+}
